@@ -1,0 +1,22 @@
+.container{
+    max-width: 800px;
+    margin: 0 auto
+}
+.form-textarea{
+    width: 80%;
+    height: 200px
+}
+.panel-body{
+    padding-top: 20px;
+}
+table.pure-table{
+    width: 100%;
+}
+tr.table-validated{
+    background-color: rgba(0, 0, 255, 0.33);
+    color: #fff;
+}
+tr.table-validated-error{
+    background-color:rgba(255, 0, 0, 0.33);
+    color: #fff;
+}

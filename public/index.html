@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="gbChallenge">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Gb Challenge</title>
+            
+        <link rel="stylesheet" href="css/pure-min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/controllers/controller.js"></script>
+
+
+    </head>
+    
+    <body ng-controller="mainController">
+    <div class="container panel" >
+        <h1 class="text-center">Gb Challenge</h1>
+         <div class="row">
+            <div class="col-md-12">
+                <form class="pure-form" ng-submit="postCollisions(this)">
+                    <textarea name="collisions" placeholder="Past collisions" ng-model="gbForm.collisions" class=" pure-input-rounded form-textarea" options="{ debounce: 500 }">
+                        
+                    </textarea>
+                    
+                    <button type="submit" class="pure-button pure-button-primary">validate</button>
+
+                </form>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="pure-table" ng-if="listCollisions.length != 0">
+                        <thead>
+                            <tr>
+                                <th>collision</th>
+                                <th>network</th>
+                            </tr>
+                        </thead>
+
+                        <tbody ng-repeat="objCollision in listCollisions | orderBy:'+network.length' ">
+                            <tr ng-class="{'table-validated':objCollision.network.length == 2,
+                            'table-validated-error':objCollision.network.length != 2}">
+                                <td>{{objCollision.collision}}</td>
+                                <td><span ng-repeat="network in objCollision.network"> ( {{network.toString()}} )</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+         </div>
+
+    </div><!-- fim container -->
+    
+    </body>
+</html>
